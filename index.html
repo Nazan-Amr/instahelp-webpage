@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emergency View — Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-inner">
+        <div>
+          <h1>🚨 Emergency Medical Information</h1>
+          <p class="muted">Critical medical data for emergency responders</p>
+        </div>
+        <div id="call-actions">
+          <!-- Call button populated by script -->
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="vitals" id="vital-monitor"></section>
+
+      <div class="grid">
+        <div class="card blood">
+          <div class="card-left">
+            <div class="label">Blood Type</div>
+            <div id="blood-type" class="big">--</div>
+          </div>
+          <div class="emoji">🩸</div>
+        </div>
+
+        <div class="card allergies">
+          <div class="label">⚠️ Allergies</div>
+          <div id="allergies-list">--</div>
+        </div>
+      </div>
+
+      <div class="card contact">
+        <h2>📞 Emergency Contact</h2>
+        <div class="contact-inner">
+          <div>
+            <div id="contact-name" class="contact-name">--</div>
+            <div id="contact-relationship" class="muted">--</div>
+            <div id="contact-phone" class="phone">--</div>
+          </div>
+          <div>
+            <div id="call-now"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card instructions">
+        <h2>⚠️ Important Instructions</h2>
+        <div id="short-instructions">--</div>
+      </div>
+
+      <div class="card" id="last-vitals-card" style="display:none;">
+        <h2>📊 Last Vitals</h2>
+        <div id="last-vitals" class="vitals-grid"></div>
+      </div>
+
+      <div class="card" id="hospitals-card" style="display:none;">
+        <h2>🏥 Nearest Hospitals</h2>
+        <div id="map" class="map"></div>
+        <ul id="hospital-list" class="hospital-list"></ul>
+      </div>
+
+      <div class="card info">
+        <div class="info-left">
+          <strong>ℹ️ About This View</strong>
+          <p class="muted">This is a limited public view for emergency responders. For full medical records, authorized medical personnel must log in.</p>
+        </div>
+        <div class="info-actions">
+          <button id="refresh-btn" class="btn">🔄 Refresh</button>
+          <button id="login-btn" class="btn primary">🔒 Log in to view</button>
+        </div>
+      </div>
+
+      <div class="card" id="full-record" style="display:none;">
+        <h2>Full Medical Record (Demo)</h2>
+        <div id="full-record-content"></div>
+      </div>
+
+    </main>
+
+    <footer class="footer muted">Static demo generated from EmergencyPage.tsx</footer>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
+</html>
