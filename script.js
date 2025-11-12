@@ -8,7 +8,7 @@
   const demo = {
     blood_type: 'A',
     rh_factor: '+',
-    emergency_contact: { name: 'John Doe', relationship: 'Brother', phone: '+1234567890' },
+    emergency_contact: { name: 'John Doe', relationship: 'Brother', phone: '+201206593899' },
     allergies: [ { allergen: 'Peanuts', reaction: 'Anaphylaxis', severity: 'critical' }, { allergen: 'Penicillin', reaction: 'Rash', severity: 'severe' } ],
     short_instructions: 'I am asthmatic. Always keep my inhaler nearby. In case of attack, use Ventolin Inhaler.\n Do not give me any medication containing penicillin.\nContact my father immediately and take me to nearest hospital.\n If I appear to have difficulty breathing or wheezing, assume it is an asthma attack. Please:\n 1- Assist me in sitting upright and provide access to my Ventolin inhaler (usually kept in my backpack).\n2- Administer two puffs, and wait for response. If no improvement within 10 minutes, administer two more puffs.\n3- If breathing does not stabilize, call emergency services (123 in Egypt) immediately and transport me to the nearest hospital.',
     last_vitals: { heart_rate: 88, temperature: 37.2, blood_pressure_systolic: 130, blood_pressure_diastolic: 85, oxygen_saturation: 96, respiratory_rate: 18, timestamp: new Date().toISOString() },
