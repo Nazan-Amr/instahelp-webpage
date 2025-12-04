@@ -21,7 +21,7 @@
       </div>
     </header>
 
-    <main class="container">
+    <main id="main-content" class="container">
       <section class="vitals" id="vital-monitor"></section>
 
       <div class="grid">
@@ -79,15 +79,40 @@
           <button id="login-btn" class="btn primary">🔒 Log in to view</button>
         </div>
       </div>
-
-      <div class="card" id="full-record" style="display:none;">
-        <h2>Full Medical Record (Demo)</h2>
-        <div id="full-record-content"></div>
-      </div>
-
     </main>
 
+    <div id="authenticated-view" class="authenticated-container" style="display:none;">
+      <div class="auth-header-bar">
+        <button id="back-btn" class="btn">← Back to Public View</button>
+        <h2>🔐 Full Medical Record (Authenticated)</h2>
+        <button id="logout-btn" class="btn">🚪 Logout</button>
+      </div>
+      <div id="full-record-content" class="container"></div>
+    </div>
+
     <footer class="footer muted">Static demo generated from EmergencyPage.tsx</footer>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Doctor Login</h2>
+        <button id="close-modal" class="close-btn">&times;</button>
+      </div>
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div id="error-message" class="error-message" style="display:none;"></div>
+        <button type="submit" class="btn primary">Login</button>
+      </form>
+    </div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>

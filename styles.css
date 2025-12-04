@@ -33,4 +33,52 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"He
 .hospital-list li{display:flex;justify-content:space-between;align-items:center;padding:10px;background:#f8fafc;border-radius:8px}
 .footer{max-width:920px;margin:20px auto;padding:0 16px;text-align:center}
 #vital-monitor{display:block}
-@media (max-width:800px){.grid{grid-template-columns:1fr}.vitals-grid{grid-template-columns:repeat(2,1fr)}.header-inner{flex-direction:column;align-items:flex-start}}
+
+/* Modal Styles */
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:1000}
+.modal-content{background:var(--card);padding:32px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.3);width:90%;max-width:400px}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.modal-header h2{margin:0;font-size:1.5rem}
+.close-btn{background:none;border:none;font-size:1.8rem;cursor:pointer;padding:0;color:var(--muted);width:30px;height:30px;display:flex;align-items:center;justify-content:center}
+.close-btn:hover{color:var(--primary)}
+.login-form{display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-weight:600;color:var(--primary);font-size:0.95rem}
+.form-group input{padding:10px 12px;border:1px solid rgba(15,23,42,0.1);border-radius:6px;font-size:1rem;font-family:inherit}
+.form-group input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(14,165,164,0.1)}
+.error-message{background:#fee2e2;color:#b91c1c;padding:12px;border-radius:6px;font-weight:500;border-left:4px solid #b91c1c}
+
+/* Authenticated View Styles */
+.auth-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid var(--accent);padding-bottom:16px}
+.auth-header h2{margin:0}
+#full-record-content{display:flex;flex-direction:column;gap:16px}
+.record-section{background:#f8fafc;padding:16px;border-radius:8px;border-left:4px solid var(--accent)}
+.record-section h3{margin:0 0 12px 0;color:var(--primary);font-size:1.1rem}
+.record-item{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(15,23,42,0.05)}
+.record-item:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0}
+.record-label{font-weight:600;color:var(--primary);font-size:0.95rem}
+.record-value{color:var(--muted);margin-top:4px;font-size:0.95rem}
+
+/* Authenticated View Styles */
+.authenticated-container{display:flex;flex-direction:column;min-height:100vh}
+.auth-header-bar{background:linear-gradient(90deg,#0ea5a4,#0f766e);color:white;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.auth-header-bar h2{margin:0;flex:1;text-align:center}
+.auth-header-bar .btn{background:rgba(255,255,255,0.2);color:white;border:1px solid rgba(255,255,255,0.3)}
+.auth-header-bar .btn:hover{background:rgba(255,255,255,0.3)}
+#full-record-content{display:flex;flex-direction:column;gap:16px;padding-bottom:24px}
+.record-section{background:var(--card);padding:20px;border-radius:10px;box-shadow:0 6px 20px rgba(2,6,23,0.04);border-left:6px solid var(--accent);border:1px solid rgba(15,23,42,0.03);border-left:6px solid var(--accent)}
+.record-section h3{margin:0 0 16px 0;color:var(--primary);font-size:1.15rem;font-weight:700}
+.record-item{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(15,23,42,0.06)}
+.record-item:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0}
+.record-label{font-weight:700;color:var(--primary);font-size:0.95rem;margin-bottom:6px}
+.record-value{color:var(--muted);font-size:0.95rem;line-height:1.5}
+
+@media (max-width:800px){
+  .grid{grid-template-columns:1fr}
+  .vitals-grid{grid-template-columns:repeat(2,1fr)}
+  .header-inner{flex-direction:column;align-items:flex-start}
+  .modal-content{width:95%}
+  .auth-header-bar{flex-wrap:wrap;justify-content:center;gap:8px}
+  .auth-header-bar h2{order:1;width:100%;text-align:center;margin:0}
+  .auth-header-bar button{order:2;flex:1;min-width:120px}
+}
