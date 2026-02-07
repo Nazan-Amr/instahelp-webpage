@@ -113,13 +113,16 @@
 
   // Demo data fallback (structure similar to EmergencyView.public_view)
   const demo = {
+    patient_name: 'Omar Hassan Saleh',
     blood_type: 'A',
     rh_factor: '+',
     emergency_contact: { name: 'John Doe', relationship: 'Brother', phone: '+201206593899' },
     allergies: [ { allergen: 'Peanuts', reaction: 'Anaphylaxis', severity: 'critical' }, { allergen: 'Penicillin', reaction: 'Rash', severity: 'severe' } ],
     short_instructions: 'I am asthmatic. Always keep my inhaler nearby. In case of attack, use Ventolin Inhaler.\n Do not give me any medication containing penicillin.\nContact my father immediately and take me to nearest hospital.\n If I appear to have difficulty breathing or wheezing, assume it is an asthma attack. Please:\n 1- Assist me in sitting upright and provide access to my Ventolin inhaler (usually kept in my backpack).\n2- Administer two puffs, and wait for response. If no improvement within 10 minutes, administer two more puffs.\n3- If breathing does not stabilize, call emergency services (123 in Egypt) immediately and transport me to the nearest hospital.',
     last_vitals: { heart_rate: 88, temperature: 37.2, blood_pressure_systolic: 130, blood_pressure_diastolic: 85, oxygen_saturation: 96, respiratory_rate: 18, timestamp: new Date().toISOString() },
-    vital_ranges: { heart_rate_min: 60, heart_rate_max: 100, temperature_min: 36.1, temperature_max: 37.2, blood_pressure_systolic: 120, blood_pressure_diastolic: 80 }
+    vital_ranges: { heart_rate_min: 60, heart_rate_max: 100, temperature_min: 36.1, temperature_max: 37.2, blood_pressure_systolic: 120, blood_pressure_diastolic: 80 },
+    emergency_services_phone: '123',
+    emergency_services_label: 'Dial 123'
   };
 
   // State
@@ -236,8 +239,21 @@
       el('call-now').appendChild(callNow);
     }
 
-    // Instructions
-    el('short-instructions').textContent = public_view.short_instructions || '';
+    // Important Instructions (asthma emergency styled box)
+    const patientName = public_view.patient_name || patientMedicalHistory?.name || 'Omar Hassan Saleh';
+    el('instructions-patient-name').textContent = 'Patient: ' + patientName;
+    const emergencyPhone = public_view.emergency_contact?.phone || '123';
+    const emergencyLink = el('instructions-emergency-link');
+    emergencyLink.href = 'tel:' + emergencyPhone.replace(/\s/g, '');
+    emergencyLink.textContent = emergencyPhone === '123' ? '📞 Dial 123 (Egypt)' : '📞 ' + emergencyPhone;
+    // Critical allergy warning from first severe/critical allergy
+    const criticalAllergy = public_view.allergies && public_view.allergies.length
+      ? public_view.allergies.find(a => (a.severity || '').toLowerCase() === 'critical' || (a.severity || '').toLowerCase() === 'severe')
+      : null;
+    const warningEl = el('instructions-critical-warning');
+    if (criticalAllergy) {
+      warningEl.innerHTML = '<strong style="color: #c62828;">CRITICAL: NO ' + (criticalAllergy.allergen || '').toUpperCase() + '</strong><br><span style="font-size: 14px;">Do not administer any medication containing ' + (criticalAllergy.allergen || 'this allergen') + '.</span>';
+    }
 
     // Last vitals
     if(public_view.last_vitals){
